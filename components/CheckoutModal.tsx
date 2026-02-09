@@ -32,7 +32,7 @@ const OrderSummary: React.FC<{ cart: CartItem[], total: number }> = ({ cart, tot
           <div className="flex-1 min-w-0 flex flex-col justify-center">
             <div className="flex justify-between items-baseline mb-1">
               <h4 className="font-serif text-xl text-aire-text truncate pr-4">{item.name}</h4>
-              <span className="text-sm font-sans text-aire-text font-medium">{item.price * item.quantity} €</span>
+              <span className="text-sm font-sans text-aire-text font-medium min-w-[40px] text-right">{item.price * item.quantity} €</span>
             </div>
             <p className="text-[10px] text-aire-stone uppercase tracking-widest">{item.category}</p>
           </div>
