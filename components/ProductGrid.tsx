@@ -63,6 +63,8 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100 grayscale group-hover:grayscale-0"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5">
                   <button

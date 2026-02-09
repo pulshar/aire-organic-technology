@@ -45,6 +45,8 @@ const Philosophy: React.FC = () => {
           src="https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=2000&auto=format&fit=crop"
           alt="Textura orgánica y luz"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-[3s] ease-out group-hover:scale-105"
+          loading="lazy"
+          decoding="async"
         />
 
         {/* Overlay Image - Subtle abstract light/texture blended on top */}
@@ -52,6 +54,8 @@ const Philosophy: React.FC = () => {
           src="https://images.unsplash.com/photo-1490750967868-58cb75065ed2?q=80&w=2000&auto=format&fit=crop"
           alt="Detalle minimalista"
           className="absolute inset-0 w-full h-full object-cover opacity-30 mix-blend-soft-light pointer-events-none"
+          loading="lazy"
+          decoding="async"
         />
 
         {/* Color Tint Overlay */}

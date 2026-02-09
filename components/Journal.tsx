@@ -184,6 +184,8 @@ const Journal: React.FC<JournalProps> = ({ entries }) => {
                 alt={entry.title}
                 className={`w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-110 grayscale group-hover:grayscale-0 pointer-events-none ${isDown ? 'scale-100' : ''}`}
                 draggable={false}
+                loading="lazy"
+                decoding="async"
               />
               {/* Floating Date Badge */}
               <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 pt-0.5 pb-1 z-20">

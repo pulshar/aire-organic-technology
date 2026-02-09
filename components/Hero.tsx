@@ -8,6 +8,8 @@ const Hero: React.FC = () => {
         src="https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?q=80&w=2000&auto=format&fit=crop"
         alt="Atmosphere"
         className="absolute inset-0 w-full h-full object-cover"
+        loading="eager"
+        fetchPriority="high"
       />
 
       {/* Sepia/Warm Overlay */}
