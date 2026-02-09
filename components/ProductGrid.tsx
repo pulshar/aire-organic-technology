@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../types';
 
@@ -7,9 +7,29 @@ interface ProductGridProps {
   onAddToCart: (product: Product) => void;
 }
 
+const ProductSkeleton = () => (
+  <div className="w-full flex flex-col items-center">
+    <div className="w-full aspect-[4/5] bg-aire-paper/50 rounded-sm mb-6 overflow-hidden relative">
+      <div className="absolute inset-0 animate-shimmer"></div>
+    </div>
+    <div className="w-full flex flex-col items-center gap-2">
+      <div className="w-20 h-3 bg-aire-stone/10 rounded-full animate-shimmer"></div>
+      <div className="w-40 h-8 bg-aire-stone/10 rounded-sm animate-shimmer"></div>
+      <div className="w-16 h-4 bg-aire-stone/10 rounded-full animate-shimmer mt-2"></div>
+    </div>
+  </div>
+);
+
 const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
   const [activeCategory, setActiveCategory] = useState<string>('Todos');
+  const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
+
+  // Simulate loading state
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 500);
+    return () => clearTimeout(timer);
+  }, [activeCategory]);
 
   // Extract unique categories and add 'Todos' at the beginning
   const categories = useMemo(() => {
@@ -23,6 +43,11 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
     return products.filter(product => product.category === activeCategory);
   }, [products, activeCategory]);
 
+  const handleCategoryChange = (category: string) => {
+    setIsLoading(true);
+    setActiveCategory(category);
+  };
+
   return (
     <section className="py-24 px-6 md:px-12 lg:px-24 bg-aire-bg min-h-[80vh]" id="collection">
       <div className="mb-16 text-center">
@@ -33,7 +58,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
           {categories.map((category) => (
             <button
               key={category}
-              onClick={() => setActiveCategory(category)}
+              onClick={() => handleCategoryChange(category)}
               className={`cursor-pointer relative group font-sans text-[10px] md:text-xs uppercase tracking-[0.2em] pb-1 transition-colors duration-300 ${activeCategory === category
                 ? 'text-aire-text'
                 : 'text-aire-stone hover:text-aire-text'
@@ -50,53 +75,55 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-20 gap-x-8">
-        {filteredProducts.map((product) => (
-          <div key={product.id} className="group flex flex-col items-center">
-            {/* Link wrapper for the image and info */}
-            <Link
-              to={`/producto/${product.id}`}
-              state={{ background: location }}
-              className="w-full flex flex-col items-center"
-            >
-              <div className="relative w-full aspect-[4/5] bg-aire-paper overflow-hidden mb-6 rounded-sm">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100 grayscale group-hover:grayscale-0"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault(); // Don't trigger Link
-                      e.stopPropagation();
-                      onAddToCart(product);
-                    }}
-                    className="px-6 py-3 bg-white/90 text-aire-text font-sans text-xs uppercase tracking-widest hover:bg-white shadow-sm backdrop-blur-md transition-all hover:scale-105 cursor-pointer"
-                  >
-                    Comprar
-                  </button>
+        {isLoading
+          ? Array.from({ length: 6 }).map((_, i) => <ProductSkeleton key={i} />)
+          : filteredProducts.map((product) => (
+            <div key={product.id} className="group flex flex-col items-center">
+              {/* Link wrapper for the image and info */}
+              <Link
+                to={`/producto/${product.id}`}
+                state={{ background: location }}
+                className="w-full flex flex-col items-center"
+              >
+                <div className="relative w-full aspect-[4/5] bg-aire-paper overflow-hidden mb-6 rounded-sm">
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105 opacity-90 group-hover:opacity-100 grayscale group-hover:grayscale-0"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-black/5">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault(); // Don't trigger Link
+                        e.stopPropagation();
+                        onAddToCart(product);
+                      }}
+                      className="px-6 py-3 bg-white/90 text-aire-text font-sans text-xs uppercase tracking-widest hover:bg-white shadow-sm backdrop-blur-md transition-all hover:scale-105 cursor-pointer"
+                    >
+                      Comprar
+                    </button>
+                  </div>
                 </div>
-              </div>
 
-              <div className="text-center">
-                <span className="font-sans text-[10px] uppercase tracking-widest text-aire-stone mb-1 block">
-                  {product.category}
-                </span>
-                <h3 className="font-serif text-2xl text-aire-text mb-2 group-hover:text-aire-stone transition-colors duration-300">
-                  {product.name}
-                </h3>
-                <p className="font-sans text-xs text-aire-stone mb-3 max-w-[250px] mx-auto leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
-                  Ver Detalle
-                </p>
-                <span className="font-sans text-sm text-aire-text opacity-70">
-                  {product.price} €
-                </span>
-              </div>
-            </Link>
-          </div>
-        ))}
+                <div className="text-center">
+                  <span className="font-sans text-[10px] uppercase tracking-widest text-aire-stone mb-1 block">
+                    {product.category}
+                  </span>
+                  <h3 className="font-serif text-2xl text-aire-text mb-2 group-hover:text-aire-stone transition-colors duration-300">
+                    {product.name}
+                  </h3>
+                  <p className="font-sans text-xs text-aire-stone mb-3 max-w-[250px] mx-auto leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-700 delay-100">
+                    Ver Detalle
+                  </p>
+                  <span className="font-sans text-sm text-aire-text opacity-70">
+                    {product.price} €
+                  </span>
+                </div>
+              </Link>
+            </div>
+          ))}
       </div>
     </section>
   );

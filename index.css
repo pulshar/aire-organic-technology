@@ -19,4 +19,23 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(90deg,
+        rgba(var(--aire-stone-rgb, 140, 137, 126), 0.05) 25%,
+        rgba(var(--aire-stone-rgb, 140, 137, 126), 0.1) 50%,
+        rgba(var(--aire-stone-rgb, 140, 137, 126), 0.05) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite linear;
+  }
 }
