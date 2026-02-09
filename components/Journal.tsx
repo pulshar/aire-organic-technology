@@ -173,7 +173,7 @@ const Journal: React.FC<JournalProps> = ({ entries }) => {
         {entries.map((entry) => (
           <article
             key={entry.id}
-            className="group relative flex-none w-[85vw] md:w-[45vw] lg:w-[30vw] flex flex-col transition-opacity duration-300 snap-center"
+            className="group relative flex-none w-[85vw] md:w-[45vw] lg:w-[30vw] flex flex-col transition-opacity duration-300 snap-center cursor-pointer"
             onClick={() => handleEntryClick(entry)}
           >
             {/* Image Container with Hover Zoom */}

@@ -69,7 +69,7 @@ const JournalDetailModal: React.FC<JournalDetailModalProps> = ({ isOpen, onClose
           <p className="font-sans text-xs uppercase tracking-widest text-aire-stone mb-6">Escrito por el Equipo Aire</p>
           <button
             onClick={onClose}
-            className="font-sans text-xs border-b border-aire-text pb-1 hover:text-aire-stone hover:border-aire-stone transition-colors"
+            className="font-sans text-xs border-b border-aire-text pb-1 hover:text-aire-stone hover:border-aire-stone transition-colors cursor-pointer"
           >
             Regresar a la Bitácora
           </button>

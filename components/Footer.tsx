@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Footer: React.FC = () => {
-  const linkClasses = "relative group font-sans text-sm text-aire-text/70 hover:text-aire-text transition-colors w-fit";
+  const linkClasses = "relative group font-sans text-sm text-aire-text/70 hover:text-aire-text transition-colors w-fit cursor-pointer";
   const underlineClasses = "absolute left-1/2 bottom-0 h-[1px] w-0 bg-aire-text -translate-x-1/2 transition-[width] duration-300 ease-out group-hover:w-full";
 
   return (

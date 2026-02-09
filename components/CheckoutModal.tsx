@@ -86,7 +86,7 @@ const SuccessView: React.FC<{ onClose: () => void }> = ({ onClose }) => (
     </div>
     <button
       onClick={onClose}
-      className="mt-12 px-16 py-4 bg-aire-text text-white text-[10px] uppercase tracking-[0.4em] hover:bg-aire-dark transition-all duration-700 shadow-xl"
+      className="mt-12 px-16 py-4 bg-aire-text text-white text-[10px] uppercase tracking-[0.4em] hover:bg-aire-dark transition-all duration-700 shadow-xl cursor-pointer"
     >
       Regresar a la Tienda
     </button>
@@ -123,7 +123,7 @@ const CheckoutModal: React.FC<CheckoutModalProps> = ({ isOpen, onClose, cart, on
 
           {/* Simple Mobile Header */}
           <div className="lg:hidden p-4 border-b border-aire-stone/20 bg-white flex justify-between items-center sticky top-0 z-30">
-            <button onClick={onClose} className="text-aire-text text-xs uppercase tracking-widest flex items-center gap-2">
+            <button onClick={onClose} className="text-aire-text text-xs uppercase tracking-widest flex items-center gap-2 cursor-pointer">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
               </svg>

@@ -71,9 +71,9 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
                       e.stopPropagation();
                       onAddToCart(product);
                     }}
-                    className="px-6 py-3 bg-white/90 text-aire-text font-sans text-xs uppercase tracking-widest hover:bg-white shadow-sm backdrop-blur-md transition-all hover:scale-105"
+                    className="px-6 py-3 bg-white/90 text-aire-text font-sans text-xs uppercase tracking-widest hover:bg-white shadow-sm backdrop-blur-md transition-all hover:scale-105 cursor-pointer"
                   >
-                    Adquirir
+                    Comprar
                   </button>
                 </div>
               </div>

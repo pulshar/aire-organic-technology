@@ -153,7 +153,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({ onSuccess, onCancel, total 
                     <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full bg-aire-text text-white py-5 text-sm uppercase tracking-[0.4em] hover:bg-aire-dark transition-all duration-700 relative overflow-hidden group disabled:opacity-70 shadow-2xl active:scale-[0.98]"
+                        className="w-full bg-aire-text text-white py-5 text-sm uppercase tracking-[0.4em] hover:bg-aire-dark transition-all duration-700 relative overflow-hidden group disabled:opacity-70 shadow-2xl active:scale-[0.98] cursor-pointer"
                     >
                         <span className={isSubmitting ? 'opacity-0' : 'opacity-100'}>
                             Finalizar Pago — {total} €

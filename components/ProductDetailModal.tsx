@@ -81,7 +81,7 @@ const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose
 
             <button
               onClick={() => onAddToCart(product)}
-              className="flex-1 md:flex-none md:w-64 py-4 bg-aire-text text-aire-bg hover:bg-aire-stone hover:text-white transition-all duration-500 font-sans text-xs uppercase tracking-[0.2em]"
+              className="flex-1 md:flex-none md:w-64 py-4 bg-aire-text text-aire-bg hover:bg-aire-stone hover:text-white transition-all duration-500 font-sans text-xs uppercase tracking-[0.2em] cursor-pointer"
             >
               Añadir a la Cesta
             </button>

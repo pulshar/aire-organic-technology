@@ -79,7 +79,7 @@ const App: React.FC = () => {
             {/* Full page views if accessed directly */}
             <Route
               path="/producto/:id"
-              element={<ProductDetailModal isOpen={true} onClose={() => navigate('/')} onAddToCart={addToCart} />}
+              element={<ProductDetailModal isOpen={true} onClose={() => navigate('/')} onAddToCart={(p) => { addToCart(p); handleOpenCart(); }} />}
             />
             <Route
               path="/journal/:id"
@@ -95,7 +95,7 @@ const App: React.FC = () => {
           <Routes location={location}>
             <Route
               path="/producto/:id"
-              element={<ProductDetailModal isOpen={true} onClose={() => navigate(-1)} onAddToCart={addToCart} />}
+              element={<ProductDetailModal isOpen={true} onClose={() => navigate(-1)} onAddToCart={(p) => { addToCart(p); handleOpenCart(); }} />}
             />
             <Route
               path="/journal/:id"

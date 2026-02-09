@@ -5,16 +5,14 @@ import { ChatMessage } from '../types';
 const FloatingButton: React.FC<{ isOpen: boolean; onClick: () => void }> = ({ isOpen, onClick }) => (
   <button
     onClick={onClick}
-    className={`fixed bottom-8 right-8 z-40 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg hover:scale-110 ${isOpen ? 'bg-aire-text rotate-90' : 'bg-white'}`}
+    className={`fixed bottom-8 right-8 z-40 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 shadow-lg hover:scale-110 cursor-pointer ${isOpen ? 'bg-aire-text rotate-90' : 'bg-white'}`}
   >
     {isOpen ? (
       <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
       </svg>
     ) : (
-      <div className="w-6 h-6 rounded-full border border-aire-text/30 flex items-center justify-center">
-        <div className="w-1.5 h-1.5 bg-aire-text rounded-full animate-pulse"></div>
-      </div>
+      <span className="font-serif text-xl font-medium italic tracking-tighter text-aire-text mb-0.5">Ai</span>
     )}
   </button>
 );
@@ -99,7 +97,7 @@ const Assistant: React.FC = () => {
             <button
               type="submit"
               disabled={!input.trim()}
-              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-aire-stone hover:text-aire-text disabled:opacity-30"
+              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-aire-stone hover:text-aire-text disabled:opacity-30 cursor-pointer"
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />

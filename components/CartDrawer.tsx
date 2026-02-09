@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { CartItem } from '../types';
 
 interface CartDrawerProps {
@@ -11,21 +12,79 @@ interface CartDrawerProps {
   onCheckout: () => void;
 }
 
+const ConfirmRemoveModal: React.FC<{
+  item: CartItem;
+  onConfirm: () => void;
+  onCancel: () => void;
+}> = ({ item, onConfirm, onCancel }) => (
+  <motion.div
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    exit={{ opacity: 0 }}
+    className="absolute inset-0 z-[80] bg-aire-linen/95 backdrop-blur-md flex items-center justify-center p-8 text-center"
+  >
+    <motion.div
+      initial={{ scale: 0.95, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      exit={{ scale: 0.95, opacity: 0 }}
+      className="max-w-xs"
+    >
+      <h3 className="font-serif text-2xl text-aire-text mb-4 ">Eliminar artículo</h3>
+      <p className="font-sans text-sm text-aire-stone mb-8 leading-relaxed">
+        Vas a eliminar <span className="text-aire-text font-medium">{item.name}</span> de tu carrito.
+      </p>
+      <div className="flex flex-col gap-3">
+        <button
+          onClick={onConfirm}
+          className="w-full py-3 bg-red-900/10 text-red-900 hover:bg-red-900 hover:text-white transition-all duration-500 font-sans text-[10px] uppercase tracking-widest cursor-pointer"
+        >
+          Confirmar
+        </button>
+        <button
+          onClick={onCancel}
+          className="w-full py-3 bg-aire-text text-aire-bg hover:bg-aire-stone transition-all duration-500 font-sans text-[10px] uppercase tracking-widest cursor-pointer"
+        >
+          Mantener
+        </button>
+      </div>
+    </motion.div>
+  </motion.div>
+);
+
 const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, onRemove, onUpdateQuantity, onCheckout }) => {
   const location = useLocation();
+  const [itemToRemove, setItemToRemove] = useState<CartItem | null>(null);
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleConfirmRemove = () => {
+    if (itemToRemove) {
+      onRemove(itemToRemove.id);
+      setItemToRemove(null);
+    }
+  };
 
   return (
     <>
       {/* Backdrop */}
       <div
-        className={`fixed inset-0 bg-aire-text/20 backdrop-blur-sm z-40 transition-opacity duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+        className={`fixed inset-0 bg-aire-text/20 backdrop-blur-sm z-[60] transition-opacity duration-500 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
         onClick={onClose}
       />
 
       {/* Drawer */}
-      <div className={`fixed top-0 right-0 h-full w-full md:w-[500px] bg-aire-linen z-50 shadow-2xl transform transition-transform duration-700 ease-aire-smooth ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-        <div className="flex flex-col h-full p-8">
+      <div className={`fixed top-0 right-0 h-full w-full md:w-[500px] bg-aire-linen z-[70] shadow-2xl transform transition-transform duration-700 ease-aire-smooth ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className="flex flex-col h-full p-8 relative overflow-hidden">
+
+          <AnimatePresence>
+            {itemToRemove && (
+              <ConfirmRemoveModal
+                item={itemToRemove}
+                onConfirm={handleConfirmRemove}
+                onCancel={() => setItemToRemove(null)}
+              />
+            )}
+          </AnimatePresence>
+
           <div className="flex justify-between items-center mb-12">
             <h2 className="font-serif text-2xl text-aire-text italic">Tu Selección</h2>
             <button onClick={onClose} className="cursor-pointer text-aire-text hover:text-aire-stone transition-colors font-sans text-xs uppercase tracking-widest">
@@ -80,7 +139,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, onRemove
                       <div className="flex flex-col items-end gap-1">
                         <span className="font-sans text-sm text-aire-text font-medium">{item.price * item.quantity} €</span>
                         <button
-                          onClick={() => onRemove(item.id)}
+                          onClick={() => setItemToRemove(item)}
                           className="cursor-pointer text-[11px] uppercase tracking-widest text-red-900 md:text-aire-stone hover:text-red-900 transition-colors"
                         >
                           Eliminar
@@ -101,7 +160,7 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose, cart, onRemove
             <button
               onClick={onCheckout}
               disabled={cart.length === 0}
-              className="w-full py-4 bg-aire-text text-aire-bg hover:bg-aire-stone transition-colors duration-500 font-sans text-xs uppercase tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 bg-aire-text text-aire-bg hover:bg-aire-stone transition-colors duration-500 font-sans text-xs uppercase tracking-[0.2em] disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               Proceder al Pago
             </button>

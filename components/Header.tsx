@@ -64,7 +64,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart, cartCount, isHidden = false
 
         {/* Mobile Menu Button (Hamburger) */}
         <button
-          className={`md:hidden ${headerColorClass} transition-colors duration-300`}
+          className={`md:hidden ${headerColorClass} transition-colors duration-300 cursor-pointer`}
           onClick={() => setIsMobileMenuOpen(true)}
           aria-label="Abrir menú"
         >
@@ -80,7 +80,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart, cartCount, isHidden = false
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`relative group font-sans text-xs uppercase tracking-[0.15em] transition-colors duration-300 py-2 ${scrolled ? 'text-aire-text' : 'text-white/80 hover:text-white mix-blend-difference'}`}
+              className={`relative group font-sans text-xs uppercase tracking-[0.15em] transition-colors duration-300 py-2 cursor-pointer ${scrolled ? 'text-aire-text' : 'text-white/80 hover:text-white mix-blend-difference'}`}
             >
               {item.name}
               <span className="absolute left-1/2 bottom-0 h-[1px] w-0 bg-current -translate-x-1/2 transition-[width] duration-300 ease-out group-hover:w-full"></span>
@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart, cartCount, isHidden = false
               }}
               exit={{ opacity: 0, scale: 0.8, filter: "blur(8px)" }}
               onClick={() => setIsMobileMenuOpen(false)}
-              className="absolute top-6 right-6 p-2 text-aire-text hover:text-aire-stone hover:rotate-90 transition-all duration-500"
+              className="absolute top-6 right-6 p-2 text-aire-text hover:text-aire-stone hover:rotate-90 transition-all duration-500 cursor-pointer"
             >
               <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M6 18L18 6M6 6l12 12" />
@@ -154,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart, cartCount, isHidden = false
               key={item.name}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className={`relative group font-serif text-4xl text-aire-text transition-all duration-700 delay-${index * 100} ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
+              className={`relative group font-serif text-4xl text-aire-text transition-all duration-700 delay-${index * 100} cursor-pointer ${isMobileMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
                 }`}
             >
               {item.name}

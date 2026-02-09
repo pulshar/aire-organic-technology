@@ -12,7 +12,7 @@ const CloseButton: React.FC<CloseButtonProps> = ({ onClick, className = '', vari
         return (
             <button
                 onClick={onClick}
-                className={`text-aire-stone hover:text-aire-text text-[10px] uppercase tracking-widest flex items-center gap-2 transition-colors group ${className}`}
+                className={`text-aire-stone hover:text-aire-text text-[10px] uppercase tracking-widest flex items-center gap-2 transition-colors group cursor-pointer ${className}`}
             >
                 <svg className="w-3 h-3 group-hover:-translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
