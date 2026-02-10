@@ -78,9 +78,20 @@ const Assistant: React.FC = () => {
       <FloatingButton isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
 
       <div className={`fixed bottom-28 right-8 w-80 md:w-96 bg-white/80 backdrop-blur-xl rounded-2xl shadow-2xl overflow-hidden z-40 transition-all duration-500 origin-bottom-right flex flex-col border border-white/50 ${isOpen ? 'scale-100 opacity-100' : 'scale-90 opacity-0 pointer-events-none'}`} style={{ maxHeight: '600px', height: '60vh' }}>
-        <div className="px-6 py-4 bg-aire-bg/50 border-b border-aire-stone/20">
-          <h3 className="font-serif text-lg text-aire-text italic">Guía Aire</h3>
-          <p className="font-sans text-[10px] text-aire-stone uppercase tracking-widest">Inteligencia Orgánica</p>
+        <div className="px-6 py-4 bg-aire-bg/50 border-b border-aire-stone/20 flex justify-between items-center">
+          <div>
+            <h3 className="font-serif text-lg text-aire-text italic">Guía Aire</h3>
+            <p className="font-sans text-[10px] text-aire-stone uppercase tracking-widest">Inteligencia Orgánica</p>
+          </div>
+          <button
+            onClick={() => setIsOpen(false)}
+            className="p-1 text-aire-stone hover:text-aire-text transition-colors cursor-pointer"
+            aria-label="Cerrar guía"
+          >
+            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
 
         <MessageList messages={messages} isTyping={isTyping} endRef={messagesEndRef} />

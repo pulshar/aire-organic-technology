@@ -81,7 +81,7 @@ const ProductGrid: React.FC<ProductGridProps> = ({ products, onAddToCart }) => {
             <div key={product.id} className="group flex flex-col items-center">
               {/* Link wrapper for the image and info */}
               <Link
-                to={`/producto/${product.id}`}
+                to={`/producto/${product.slug}`}
                 state={{ background: location }}
                 className="w-full flex flex-col items-center"
               >

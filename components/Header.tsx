@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ onOpenCart, cartCount, isHidden = false
   const navItems = [
     { name: 'Colección', href: '#collection' },
     { name: 'Filosofía', href: '#philosophy' },
-    { name: 'Journal', href: '#journal' }
+    { name: 'Bitácora', href: '#journal' }
   ];
 
   const headerColorClass = scrolled

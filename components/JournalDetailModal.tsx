@@ -13,8 +13,8 @@ interface JournalDetailModalProps {
 }
 
 const JournalDetailModal: React.FC<JournalDetailModalProps> = ({ isOpen, onClose }) => {
-  const { id } = useParams();
-  const entry = MOCK_JOURNAL.find(e => e.id === id);
+  const { slug } = useParams();
+  const entry = MOCK_JOURNAL.find(e => e.slug === slug);
 
   useBodyScrollLock(isOpen);
 

@@ -4,6 +4,7 @@ export const MOCK_PRODUCTS: Product[] = [
     {
         id: 'p1',
         name: 'Purificador Silente',
+        slug: 'purificador-silente',
         price: 450,
         category: 'Aire',
         description: 'Filtración HEPA verdadera con sistema de flujo laminar. Elimina el 99.97% de las partículas sin perturbar el silencio de tu hogar.',
@@ -13,6 +14,7 @@ export const MOCK_PRODUCTS: Product[] = [
     {
         id: 'p2',
         name: 'Altavoz de Cerámica',
+        slug: 'altavoz-de-ceramica',
         price: 320,
         category: 'Sonido',
         description: 'Driver de rango completo alojado en una carcasa de cerámica hecha a mano. Conectividad Bluetooth 5.0 y 12 horas de autonomía.',
@@ -22,6 +24,7 @@ export const MOCK_PRODUCTS: Product[] = [
     {
         id: 'p3',
         name: 'Lámpara de Alabastro',
+        slug: 'lampara-de-alabastro',
         price: 180,
         category: 'Luz',
         description: 'LED cálido de 2700K integrado en piedra de alabastro natural. Control táctil de intensidad para adaptarse a tu ritmo circadiano.',
@@ -31,6 +34,7 @@ export const MOCK_PRODUCTS: Product[] = [
     {
         id: 'p4',
         name: 'Base de Roble',
+        slug: 'base-de-roble',
         price: 135,
         category: 'Energía',
         description: 'Base de carga inalámbrica Qi tallada en un solo bloque de roble europeo sostenible. Superficie tratada con aceites naturales para un tacto orgánico.',
@@ -40,6 +44,7 @@ export const MOCK_PRODUCTS: Product[] = [
     {
         id: 'p5',
         name: 'Difusor Nebulosa',
+        slug: 'difusor-nebulosa',
         price: 95,
         category: 'Aire',
         description: 'Tecnología ultrasónica que dispersa aceites esenciales sin calor. Acabado en hormigón pulido y funcionamiento ultra silencioso.',
@@ -49,6 +54,7 @@ export const MOCK_PRODUCTS: Product[] = [
     {
         id: 'p6',
         name: 'Reloj de Tinta',
+        slug: 'reloj-de-tinta',
         price: 210,
         category: 'Tiempo',
         description: 'Pantalla de tinta electrónica de alto contraste en marco de roble. Muestra el tiempo con la calma del papel, sin luz azul.',
@@ -61,6 +67,7 @@ export const MOCK_JOURNAL: JournalEntry[] = [
     {
         id: '1',
         title: 'La Estética de la Ausencia',
+        slug: 'la-estetica-de-la-ausencia',
         excerpt: 'Cuando eliminamos lo innecesario, lo que queda canta.',
         date: 'Otoño 2024',
         image: 'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=800&auto=format&fit=crop',
@@ -74,6 +81,7 @@ export const MOCK_JOURNAL: JournalEntry[] = [
     {
         id: '2',
         title: 'Piedra y Silicio',
+        slug: 'piedra-y-silicio',
         excerpt: 'Una conversación entre lo ancestral y lo eterno.',
         date: 'Invierno 2024',
         image: 'https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?q=80&w=800&auto=format&fit=crop',
@@ -87,6 +95,7 @@ export const MOCK_JOURNAL: JournalEntry[] = [
     {
         id: '3',
         title: 'El Ritual del Inicio',
+        slug: 'el-ritual-del-inicio',
         excerpt: 'La tecnología como facilitadora de la ceremonia matutina.',
         date: 'Primavera 2025',
         image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=800&auto=format&fit=crop',
@@ -99,6 +108,7 @@ export const MOCK_JOURNAL: JournalEntry[] = [
     {
         id: '4',
         title: 'Luz Líquida',
+        slug: 'luz-liquida',
         excerpt: 'Iluminación que respira con el ritmo de tu cuerpo.',
         date: 'Verano 2025',
         image: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?q=80&w=800&auto=format&fit=crop',
@@ -111,6 +121,7 @@ export const MOCK_JOURNAL: JournalEntry[] = [
     {
         id: '5',
         title: 'Texturas del Tiempo',
+        slug: 'texturas-del-tiempo',
         excerpt: 'Por qué permitimos que nuestros objetos envejezcan.',
         date: 'Otoño 2025',
         image: 'https://images.unsplash.com/photo-1506619216599-9d16d0903dfd?q=80&w=800&auto=format&fit=crop',

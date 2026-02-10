@@ -14,8 +14,8 @@ interface ProductDetailModalProps {
 }
 
 const ProductDetailModal: React.FC<ProductDetailModalProps> = ({ isOpen, onClose, onAddToCart }) => {
-  const { id } = useParams();
-  const product = MOCK_PRODUCTS.find(p => p.id === id);
+  const { slug } = useParams();
+  const product = MOCK_PRODUCTS.find(p => p.slug === slug);
 
   useBodyScrollLock(isOpen);
 

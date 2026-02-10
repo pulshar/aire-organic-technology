@@ -6,6 +6,7 @@ export interface Product {
   poeticDescription: string;
   image: string;
   category: string;
+  slug: string;
 }
 
 export interface CartItem extends Product {
@@ -26,4 +27,5 @@ export interface JournalEntry {
   date: string;
   image: string;
   content: string[];
+  slug: string;
 }

@@ -144,7 +144,7 @@ const Journal: React.FC<JournalProps> = ({ entries }) => {
 
   const handleEntryClick = (entry: JournalEntry) => {
     if (hasDraggedRef.current) return;
-    navigate(`/journal/${entry.id}`, { state: { background: location } });
+    navigate(`/bitacora/${entry.slug}`, { state: { background: location } });
   };
 
   return (
